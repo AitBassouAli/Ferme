@@ -83,14 +83,14 @@ export default class HomeScreen extends Component {
         <ImageBackground  source={require('../images/back3.jpg')} style={{width: width, height: height}}> 
         <View style={styles.slide3}>
           <Text style={styles.text1}>Les oiseaux</Text>
-          <Image source={require('../images/bird.jpg')} onPress={() => this.props.navigation.navigate('Accueil')} style={styles.slide1}/>
+          <Image source={require('../images/bird.jpg')}  style={styles.slide1}/>
         </View>
         </ImageBackground >
 
         <ImageBackground  source={require('../images/back4.jpg')} style={{width: width, height: height}}> 
         <View style={styles.slide4}>
           <Text style={styles.text}>Les animaux aquatiques</Text>
-          <Image source={require('../images/AquaAni.jpg')} onPress={() => this.props.navigation.navigate('Accueil')} style={styles.slide1}/>
+          <Image source={require('../images/AquaAni.jpg')}  style={styles.slide1}/>
         </View>
         </ImageBackground >
       </Swiper>
