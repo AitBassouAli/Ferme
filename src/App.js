@@ -14,6 +14,7 @@ import { DrawerNavigator, StackNavigator, DrawerItems, SafeAreaView } from 'reac
 
 import HomeScreen from "./components/HomeScreen";
 import JeuScreen from "./components/JeuScreen";
+import SauvageScreen from "./components/SauvageScreen";
 
 
 export default class App extends Component {
@@ -49,9 +50,13 @@ const MyApp = DrawerNavigator({
   Accueil: {
     screen: HomeScreen,  
   },
-  Jouer: {
+  'Les animaux de la ferme': {
     screen: JeuScreen,
     
+},
+'Les animaux sauvages': {
+  screen: SauvageScreen,
+  
 },
   
 },
