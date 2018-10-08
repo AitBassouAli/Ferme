@@ -11,6 +11,7 @@ import {
 import { Container, Content, Card, Button } from 'native-base';
 import Swiper from 'react-native-swiper';
 import HeaderComponent from './Header';
+import * as Animatable from 'react-native-animatable';
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   wrapper: {
@@ -30,8 +31,8 @@ const styles = StyleSheet.create({
     borderColor : '#008000',
     borderWidth : 2,
     padding : 20,
-    paddingLeft : 40,
-    paddingRight : 40,
+    paddingLeft : 30,
+   // paddingRight : 40,
     backgroundColor: 'rgba(255,255,255,.1)',
     marginTop : 90,
   },
@@ -67,29 +68,46 @@ export default class HomeScreen extends Component {
        
        <ImageBackground  source={require('../images/back.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
-        <Text style={styles.text}  onPress={() => this.props.navigation.navigate('Jouer')}>Les Animaux de la ferme</Text>
+        <Animatable.Text animation="bounce" easing="ease-in-back" iterationCount="infinite"style={styles.text}>
+        <Text  onPress={() => this.props.navigation.navigate('Les animaux de la ferme')}>
+        <Image source={require('../images/go.png')}style={{ height: 25, width: 25}} />
+        Les Animaux de la ferme</Text>
+        </Animatable.Text>
         <Image source={require('../images/fermeAn.jpg')}style={styles.slide1}/>
         </View>
         </ImageBackground >
 
         <ImageBackground  source={require('../images/back2.png')} style={{width: width, height: height}}> 
         <View style={styles.slide2}>
-          <Text style={styles.text}>Les animaux sauvages</Text>
-          <Image source={require('../images/AniSau.jpg')}/>
+        <Animatable.Text animation="bounce" easing="ease-in-back" iterationCount="infinite" style={styles.text}>
+        <Text style={styles.text} onPress={() => this.props.navigation.navigate('Les animaux sauvages')}>
+        <Image source={require('../images/go.png')}style={{ height: 25, width: 25}} />
+        Les animaux sauvages</Text>
+        </Animatable.Text>
+        <Image source={require('../images/AniSau.jpg')}/>
         </View>
         </ImageBackground >
 
         <ImageBackground  source={require('../images/back3.jpg')} style={{width: width, height: height}}> 
         <View style={styles.slide3}>
-          <Text style={styles.text1}>Les oiseaux</Text>
+        <Animatable.Text animation="bounce" easing="ease-in-back" iterationCount="infinite" style={styles.text1} >
+          <Text style={styles.text1} onPress={() => this.props.navigation.navigate('Les animaux sauvages')}>
+          <Image source={require('../images/go.png')}style={{ height: 25, width: 25}} />
+          Les oiseaux</Text>
+          </Animatable.Text>
           <Image source={require('../images/bird.jpg')}  style={styles.slide1}/>
+         
         </View>
         </ImageBackground >
 
         <ImageBackground  source={require('../images/back4.jpg')} style={{width: width, height: height}}> 
         <View style={styles.slide4}>
-          <Text style={styles.text}>Les animaux aquatiques</Text>
-          <Image source={require('../images/AquaAni.jpg')}  style={styles.slide1}/>
+        <Animatable.Text animation="bounce" easing="ease-in-back" iterationCount="infinite" style={styles.text} >
+          <Text style={styles.text}>
+          <Image source={require('../images/go.png')}style={{ height: 25, width: 25}} />
+          Les animaux aquatiques</Text>
+          </Animatable.Text>
+          <Image source={require('../images/AquaAni.jpg')} onPress={() => this.props.navigation.navigate('Accueil')} style={styles.slide1}/>
         </View>
         </ImageBackground >
       </Swiper>
