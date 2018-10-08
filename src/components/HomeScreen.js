@@ -9,7 +9,6 @@ import {
   Dimensions
 } from 'react-native';
 import { Container, Content, Card, Button } from 'native-base';
-import Slideshow from 'react-native-slideshow';
 import Swiper from 'react-native-swiper';
 import HeaderComponent from './Header';
 const { width, height } = Dimensions.get('window');
