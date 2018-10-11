@@ -15,8 +15,10 @@ import { DrawerNavigator, StackNavigator, DrawerItems, SafeAreaView } from 'reac
 import HomeScreen from "./components/HomeScreen";
 import JeuScreen from "./components/JeuScreen";
 import SauvageScreen from "./components/SauvageScreen";
+import BirdScreen from "./components/BirdScreen";
+//import MerScreen from "./components/MerScreen";
 
-
+import MerScreen from "./components/MerScreen";
 export default class App extends Component {
 
   render() {
@@ -58,6 +60,15 @@ const MyApp = DrawerNavigator({
   screen: SauvageScreen,
   
 },
+
+'Les oiseaux': {
+  screen: BirdScreen,
+  
+},
+'Les animaux aquatiques':{
+  screen : MerScreen,
+}
+
   
 },
   {
