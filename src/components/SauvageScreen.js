@@ -71,6 +71,12 @@ export default class SauvageScreen extends Component {
   openDrawer() {
     this.props.navigation.navigate('DrawerOpen');
 }
+static navigationOptions = {
+  drawerIcon: (
+      <Image source={require('../images/lion.png')}
+          style={{ height: 30, width: 30 }} />
+  )
+}
   render(){
     return (
       <Container>
@@ -98,7 +104,7 @@ export default class SauvageScreen extends Component {
           <ImageBackground  source={require('../images/back2.png')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-100,textAlign: 'center',height:450, width:450, marginLeft:-10 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-140,textAlign: 'center',height:470, width:450, marginLeft:-25 }}>
         <Image source={require('../images/elephant.png')}/>
         </Animatable.Text>
         </View>
@@ -107,7 +113,7 @@ export default class SauvageScreen extends Component {
           <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-125,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-140,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
         <Image source={require('../images/Gorille.png')}/>
         </Animatable.Text>
         </View>
@@ -116,7 +122,7 @@ export default class SauvageScreen extends Component {
            <ImageBackground  source={require('../images/back2.png')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-120,textAlign: 'center',height:450, width:350, marginLeft:20 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-140,textAlign: 'center',height:470, width:350, marginLeft:20 }}>
         <Image source={require('../images/zebra.png')}/>
         </Animatable.Text>
         </View>
