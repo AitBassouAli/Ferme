@@ -71,6 +71,12 @@ export default class JeuScreen extends Component {
   openDrawer() {
     this.props.navigation.navigate('DrawerOpen');
 }
+static navigationOptions = {
+  drawerIcon: (
+      <Image source={require('../images/vache-.png')}
+          style={{ height: 30, width: 30 }} />
+  )
+}
   render(){
     return (
       <Container>
@@ -89,7 +95,7 @@ export default class JeuScreen extends Component {
         <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-90,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-120,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
         <Image source={require('../images/poule.png')}/>
         </Animatable.Text>
         </View>
@@ -98,7 +104,7 @@ export default class JeuScreen extends Component {
           <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-70,textAlign: 'center',height:400, width:350, marginLeft:28 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-170,textAlign: 'center',height:520, width:350, marginLeft:28 }}>
         <Image source={require('../images/cheval.png')}/>
         </Animatable.Text>
         </View>
@@ -107,7 +113,7 @@ export default class JeuScreen extends Component {
           <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-10,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-20,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
         <Image source={require('../images/mouton.png')}/>
         </Animatable.Text>
         </View>
@@ -116,7 +122,7 @@ export default class JeuScreen extends Component {
            <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-70,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
+        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-170,textAlign: 'center',height:520, width:350, marginLeft:28 }}>
         <Image source={require('../images/lapin.png')}/>
         </Animatable.Text>
         </View>
