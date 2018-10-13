@@ -1,130 +1,77 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ImageBackground,
-  Dimensions
-} from 'react-native';
-import { Container, Content, Card, Button } from 'native-base';
-import Slideshow from 'react-native-slideshow';
+import {StyleSheet,Image} from 'react-native';
+import { Container} from 'native-base';
 import Swiper from 'react-native-swiper';
 import HeaderComponent from './Header';
-const { width, height } = Dimensions.get('window');
-import * as Animatable from 'react-native-animatable';
+import animals from '../fixturs/data';
+import Voice from 'react-native-voice';
+import Tts from 'react-native-tts';
+import Animal from './Animal';
 
 const styles = StyleSheet.create({
   wrapper: {
-  },
-  slide1: {
-   // width: 500,
-    // height: 380, 
-    // marginTop:165
-   // marginLeft: 70
-    
-  },
-  slide2: {
-  
-  },
-  slide3: {
- 
-  },
-  slide4: {
-
-  },
-
-  text: {
-    color: '#008000',
-    fontSize: 28,
-    fontWeight: 'bold',
-    borderColor : '#008000',
-    borderWidth : 2,
-    padding : 20,
-    paddingLeft : 40,
-    paddingRight : 40,
-    backgroundColor: 'rgba(255,255,255,.1)',
-    marginTop : 90,
-  },
-  text1 : {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: 'bold',
-   // borderColor : '#008000',
-   // borderWidth : 2,
-    padding : 20,
-    paddingLeft : 95,
-    paddingRight : 40,
-    backgroundColor: 'rgba(255,255,255,.1)',
-    marginTop : 90,
-
-  },
-  overlayC : {
-    flex : 1,
-    backgroundColor: 'rgba(47,163,218,.2)',
-   
   }
 })
 
+let animalsList = [];
 export default class JeuScreen extends Component {
+
+  componentWillMount() {
+  const category = this.props.navigation.getParam('category', 'pets');
+  animalsList = category == 'pets' ? animals[0].Pets : animals[0].Souvages;
+  }
+
   openDrawer() {
     this.props.navigation.navigate('DrawerOpen');
+}
+
+onSpeechStartHandler() {
+  Voice.start('fr-FR');
+}
+onSpeechEndHandler() {
+  Voice.stop();
+  this.setState({
+      results: ""
+  });
+}
+onSpeechResultsHandler= (e) => {
+  this.setState({
+      results: e.value
+  });
+  alert(e.value);
+};
+onSpeechStart(e) {
+
+}
+
+sayAnimalName(name){
+  Tts.speak(name);
+}
+
+getData(){
+  return (
+    animalsList[0].list.map((animal) =>
+    <Animal key = {animal.name} 
+    imgUrl = {animal.img} 
+    name = {animal.name}
+    keywords = {animal.keys}  
+    bgImgUrl = {animals[0].Pets[0].backgroundImg} />
+  )
+  ) 
+}
+static navigationOptions = {
+  drawerIcon: (
+      <Image source={require('../images/vache.png')}
+          style={{ height: 30, width: 30 }} />
+  )
 }
   render(){
     return (
       <Container>
-         <HeaderComponent openDrawer={() => this.openDrawer()}/>
-      <Swiper style={styles.wrapper} showsButtons={true}  nextButton= { <Image source={require('../images/next.png')} style={{ height: 35, width: 35}}/>} prevButton= { <Image source={require('../images/prev.png')} style={{ height: 37, width: 37}}/>}>
-       
-       <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
-        <View style={styles.overlayC}>
-        <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ textAlign: 'center', marginTop:-70,height:400, width:350, marginLeft:28 }}>
-        <Image source={require('../images/vache.png')}/>
-        </Animatable.Text>
-        </View>
-        </ImageBackground >
-
-        <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
-        <View style={styles.overlayC}>
-        <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-90,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
-        <Image source={require('../images/poule.png')}/>
-        </Animatable.Text>
-        </View>
-        </ImageBackground >
-
-          <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
-        <View style={styles.overlayC}>
-        <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-70,textAlign: 'center',height:400, width:350, marginLeft:28 }}>
-        <Image source={require('../images/cheval.png')}/>
-        </Animatable.Text>
-        </View>
-        </ImageBackground >
-
-          <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
-        <View style={styles.overlayC}>
-        <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-10,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
-        <Image source={require('../images/mouton.png')}/>
-        </Animatable.Text>
-        </View>
-        </ImageBackground >
-
-           <ImageBackground  source={require('../images/backC.jpg')} style={{width: width, height: height}}> 
-        <View style={styles.overlayC}>
-        <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-        <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ marginTop:-70,textAlign: 'center',height:450, width:350, marginLeft:28 }}>
-        <Image source={require('../images/lapin.png')}/>
-        </Animatable.Text>
-        </View>
-        </ImageBackground >
-
-    
-      </Swiper>
-     
+        <HeaderComponent openDrawer={() => this.openDrawer()}/>
+        <Swiper style={styles.wrapper} showsButtons={true}  nextButton= { <Image source={require('../images/next.png')} style={{ height: 35, width: 35}}/>} prevButton= { <Image source={require('../images/prev.png')} style={{ height: 37, width: 37}}/>}>
+          {this.getData()}
+        </Swiper>
       </Container>
     );
   }

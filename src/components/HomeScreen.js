@@ -69,7 +69,7 @@ export default class HomeScreen extends Component {
        <ImageBackground  source={require('../images/back.jpg')} style={{width: width, height: height}}> 
         <View style={styles.overlayC}>
         <Animatable.Text animation="bounce" easing="ease-in-back" iterationCount="infinite"style={styles.text}>
-        <Text  onPress={() => this.props.navigation.navigate('Les animaux de la ferme')}>
+        <Text  onPress={() => this.props.navigation.navigate('Les animaux de la ferme',{category: 'pets'})}>
         <Image source={require('../images/go.png')}style={{ height: 25, width: 25}} />
         Les Animaux de la ferme</Text>
         </Animatable.Text>
@@ -80,7 +80,7 @@ export default class HomeScreen extends Component {
         <ImageBackground  source={require('../images/back2.png')} style={{width: width, height: height}}> 
         <View style={styles.slide2}>
         <Animatable.Text animation="bounce" easing="ease-in-back" iterationCount="infinite" style={styles.text}>
-        <Text style={styles.text} onPress={() => this.props.navigation.navigate('Les animaux sauvages')}>
+        <Text style={styles.text} onPress={() => this.props.navigation.navigate('Les animaux de la ferme',{category: 'souvages'})}>
         <Image source={require('../images/go.png')}style={{ height: 25, width: 25}} />
         Les animaux sauvages</Text>
         </Animatable.Text>

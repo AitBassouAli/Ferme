@@ -3,6 +3,8 @@ package com.ferme;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import net.no_mad.tts.TextToSpeechPackage;
+import com.smixx.reactnativeicons.ReactNativeIcons;
 import com.wenkesj.voice.VoicePackage;
 import com.horcrux.svg.SvgPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new TextToSpeechPackage(),
+            new ReactNativeIcons(),
             new VoicePackage(),
             new SvgPackage()
       );
