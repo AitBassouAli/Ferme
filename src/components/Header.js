@@ -4,11 +4,7 @@ import { Header, Left, Right, Button, Icon, Item, Input } from 'native-base';
 import Voice from 'react-native-voice';
 import { DrawerNavigator, StackNavigator, DrawerItems, SafeAreaView } from 'react-navigation'
 export default class HeaderComponent extends Component {
-    openDrawer() {
-        this.props.navigation.navigate('DrawerOpen');
-    }
- 
- 
+    
     render() {
         const { openDrawer } = this.props;
         return (
@@ -16,7 +12,7 @@ export default class HeaderComponent extends Component {
                 <Left>
                     <Button transparent onPress={() => openDrawer()}>
                     <Image source={require('../images/menu.png')}
-          style={{ height: 35, width: 35}} />
+                        style={{ height: 35, width: 35}} />
                     </Button>
                 </Left>
                

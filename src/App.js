@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image
-} from "react-native";
+import {StyleSheet,Image} from "react-native";
 
 //library imports 
 import { Container, Content, Icon, Header, Body } from 'native-base'
@@ -54,26 +48,19 @@ const MyApp = DrawerNavigator({
   },
   'Les animaux de la ferme': {
     screen: JeuScreen,
-    
 },
 'Les animaux sauvages': {
   screen: SauvageScreen,
-  
 },
-
 'Les oiseaux': {
   screen: BirdScreen,
-  
 },
 'Les animaux aquatiques':{
   screen : MerScreen,
-}
-
-  
+} 
 },
   {
     initialRouteName: 'Accueil',
-    
     drawerPosition: 'left',
     contentComponent: CustomDrawerContentComponent,
     drawerOpenRoute: 'DrawerOpen',

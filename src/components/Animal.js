@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,View,Image,ImageBackground,Dimensions,TouchableOpacity
+    StyleSheet,View,Image,TouchableOpacity
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Voice from 'react-native-voice';
 import Tts from 'react-native-tts';
-
-const { width, height } = Dimensions.get('window');
 
 export default class Animal extends Component {
 
@@ -43,37 +41,34 @@ export default class Animal extends Component {
     
     render() {
         return (
-            <ImageBackground  source={this.props.bgImgUrl} style={{width: width, height: height}}> 
             <View style={styles.overlayC}>
-            <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text1}>De quoi s'agit-il?</Animatable.Text>
-            <TouchableOpacity  onPress = {() => this.sayAnimalName(this.props.name)} onLongPress = {() => this.onSpeechStartHandler()}>
-            <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ textAlign: 'center',height:400, width:350 ,marginTop:'-30%'}}>
-            <Image source={this.props.imgUrl}/>
-            </Animatable.Text>
+            <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text}>De quoi s'agit-il?</Animatable.Text>
+            <TouchableOpacity  onPress = {() => this.sayAnimalName(this.props.name)} onLongPress = {() => this.onSpeechStartHandler()} style={{ justifyContent: 'center',alignItems: 'center', width:'100%', height: 350}}>
+            <Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite" >
+            <Image source={this.props.imgUrl} style={styles.image }/>
+            </Animatable.View>
             </TouchableOpacity>
             </View>
-          </ImageBackground >
         )
     }
 }
 
 const styles = StyleSheet.create({
-    text1 : {
+    text : {
+        textAlign: 'center', 
         color: '#fff',
         fontSize: 28,
         fontWeight: 'bold',
-       // borderColor : '#008000',
-       // borderWidth : 2,
         padding : 20,
-        paddingLeft : 95,
-        paddingRight : 40,
-        backgroundColor: 'rgba(255,255,255,.1)',
-        marginTop : 90,
-    
+        backgroundColor: 'rgba(255,255,255,.2)',
+        marginTop : 50,
+        margin:10
     },
     overlayC : {
-        flex : 1,
-        backgroundColor: 'rgba(47,163,218,.2)',
-       
+        backgroundColor: 'rgba(47,163,218,.0)',
+    },
+    image:{
+        alignSelf: 'center',
+        resizeMode:"stretch"
     }
 });
