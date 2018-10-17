@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback, Modal, Text, TouchableHighlight, TouchableOpacity, Button } from 'react-native';
 import { Header, Left, Right, Icon, Item, Input } from 'native-base';
 import Voice from 'react-native-voice';
@@ -9,46 +9,46 @@ export default class VoiceTest extends Component {
 
   state = {
     results: []
-}
-constructor() {
+  }
+  constructor() {
     super();
     Voice.onSpeechResults = this.onSpeechResultsHandler.bind(this);
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechEnd = this.onSpeechEndHandler.bind(this);
-}
+  }
 
-onSpeechStartHandler() {
+  onSpeechStartHandler() {
     Voice.start('en-US');
-}
-onSpeechEndHandler() {
+  }
+  onSpeechEndHandler() {
     Voice.stop();
     this.setState({
-        results: ""
+      results: ""
     });
-}
-onSpeechResultsHandler(e) {
+  }
+  onSpeechResultsHandler(e) {
     this.setState({
-        results: e.value
+      results: e.value
     });
-}
-onSpeechStart(e) {
-  
-}
+  }
+  onSpeechStart(e) {
+
+  }
 
   render() {
-    const {results} = this.state;
+    const { results } = this.state;
     return (
       <View>
-        <ImageSliderz 
-        dataSource={[
-          { url:require('../images/fermeAn.jpg') },
-          { url:require('../images/AniSau.jpg') },
-          { url:require('../images/AquaAni.jpg') }
-        ]}/>
-       <Button style={styles.buttonIcon}
-        onPress={this.onSpeechStartHandler.bind(this)}
-        title="Start"></Button>
-       
+        <ImageSliderz
+          dataSource={[
+            { url: require('../images/fermeAn.jpg') },
+            { url: require('../images/AniSau.jpg') },
+            { url: require('../images/AquaAni.jpg') }
+          ]} />
+        <Button style={styles.buttonIcon}
+          onPress={this.onSpeechStartHandler.bind(this)}
+          title="Start"></Button>
+
         {results.map((result) => <Text style={styles.transcript}> {result}</Text>
         )}
       </View>
@@ -62,5 +62,5 @@ const styles = StyleSheet.create({
   },
   buttonIcon: {
     backgroundColor: 'red',
-},
+  },
 });
