@@ -10,9 +10,8 @@ import HomeScreen from "./components/HomeScreen";
 import JeuScreen from "./components/JeuScreen";
 import SauvageScreen from "./components/SauvageScreen";
 import BirdScreen from "./components/BirdScreen";
-//import MerScreen from "./components/MerScreen";
-
 import MerScreen from "./components/MerScreen";
+
 export default class App extends Component {
 
   render() {
@@ -44,7 +43,7 @@ const MyApp = DrawerNavigator({
 
   // For each screen that you can navigate to, create a new entry like this:
   Accueil: {
-    screen: HomeScreen,  
+    screen: HomeScreen  
   },
   'Les animaux de la ferme': {
     screen: JeuScreen,

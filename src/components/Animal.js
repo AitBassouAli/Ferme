@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, View, Image, TouchableOpacity
+    StyleSheet, View, Image, TouchableOpacity, Text
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Voice from 'react-native-voice';
 import Tts from 'react-native-tts';
 
-export default class Animal extends Component {
+const felecitations = ['bravooo !', 'très bien !', 'excellent !', 'ohhhhh extraordinaire !', 'bon reponse continuer comme ça !', "très bien vous l'avez fait !"];
 
+export default class Animal extends Component {
+    state = {
+        nbrBadAnswer: 0
+    }
     constructor() {
         super();
         Voice.onSpeechResults = this.onSpeechResultsHandler.bind(this);
         Voice.onSpeechStart = this.onSpeechStart.bind(this);
         Voice.onSpeechEnd = this.onSpeechEndHandler.bind(this);
-        sayAnimalName = this.sayAnimalName.bind(this);
+        this.speek = this.speek.bind(this);
     }
 
     onSpeechStartHandler(k) {
@@ -22,21 +26,25 @@ export default class Animal extends Component {
     }
     onSpeechEndHandler() {
         Voice.stop();
-        this.setState({
-            results: ""
-        });
     }
     onSpeechResultsHandler = (e) => {
-        //alert(this.props.keywords);
         const isGoodAnswer = this.verifyAnswer(this.props.keywords, e.value);
         if (isGoodAnswer) {
-            alert("goooood ");
+            const randomNumber = Math.floor(Math.random() * 6);
+            if (this.state.nbrBadAnswer >= 1) {
+                this.speek('je sais que tu me connais');
+            }
+            this.speek(felecitations[randomNumber]);
         } else {
-            alert("nooooooo !!");
+            if (this.state.nbrBadAnswer > 2) {
+                this.speek('tu veux de l\'aide ?,cliquez sur moi pour entendre mon nom');
+            } else {
+                this.speek('Essayer de nouveau !');
+            }
+            this.setState({
+                nbrBadAnswer: this.state.nbrBadAnswer + 1
+            })
         }
-        this.setState({
-            results: e.value
-        });
     };
     verifyAnswer(animalKeyWrds, answer) {
         for (let i = 0; i < animalKeyWrds.length; i++) {
@@ -53,19 +61,30 @@ export default class Animal extends Component {
 
     }
 
-    sayAnimalName(name) {
+    speek(name) {
         Tts.speak(name);
+    }
+    helpMe(name) {
+        if (this.state.nbrBadAnswer - 1 > 2) {
+            Tts.speak(name);
+        }
     }
 
     render() {
         return (
             <View style={styles.overlayC}>
-                <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text}>De quoi s'agit-il?</Animatable.Text>
-                <TouchableOpacity onPress={() => this.sayAnimalName(this.props.name)} onLongPress={() => this.onSpeechStartHandler()} style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: 350 }}>
-                    <Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite" >
+                <View style={styles.TouchableBtn}>
+                    <Animatable.Text animation="swing" iterationCount={3} direction="alternate" style={styles.text} >{this.props.question}</Animatable.Text>
+                    <TouchableOpacity onPress={() => { this.onSpeechStartHandler() }}  >
+                        <Image source={require('../images/record.png')} style={{ height: 35, width: 35 }} />
+                    </TouchableOpacity>
+                </View>
+                <Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite" style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: 350 }} >
+                    <TouchableOpacity onPress={() => this.helpMe(this.props.name)} >
                         <Image source={this.props.imgUrl} style={styles.image} />
-                    </Animatable.View>
-                </TouchableOpacity>
+                    </TouchableOpacity>
+                </Animatable.View>
+                
             </View>
         )
     }
@@ -77,16 +96,21 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 28,
         fontWeight: 'bold',
-        padding: 20,
+    },
+    TouchableBtn: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignContent: 'center',
         backgroundColor: 'rgba(255,255,255,.2)',
+        padding: 20,
         marginTop: 50,
-        margin: 10
     },
     overlayC: {
         backgroundColor: 'rgba(47,163,218,.0)',
     },
     image: {
         alignSelf: 'center',
-        resizeMode: "stretch"
+        resizeMode: "stretch",
+        height: 250
     }
 });

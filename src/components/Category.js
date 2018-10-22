@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, View, Image, ImageBackground, Dimensions, Text
+    StyleSheet, View, Image, ImageBackground, Dimensions, Text, TouchableWithoutFeedback
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 const { width, height } = Dimensions.get('window');
@@ -9,19 +9,20 @@ export default class Category extends Component {
 
     render() {
         return (
-            <ImageBackground source={this.props.bgImgUrl} style={{ width: width, height: height }}>
+            //<ImageBackground source={this.props.bgImgUrl} style={{ width: width, height: height }}>
                 <View style={styles.overlayC}>
                     <View style={styles.categoryName}>
                         <Animatable.Text easing="ease-in-back" iterationCount="infinite" style={styles.text}>
-                            <Text onPress={() => this.props.navigate('Les animaux de la ferme', this.props.refe)}>
-                                <Image source={require('../images/go.png')} style={{ height: 25, width: 25 }} />
+                            <Text >
                                 {this.props.name}
                             </Text>
                         </Animatable.Text>
                     </View>
-                    <Image source={this.props.imgUrl} style={styles.slide1} />
+                    <TouchableWithoutFeedback onPress={() => this.props.navigate(this.props.refe)}>
+                        <Image source={this.props.imgUrl} style={styles.slide1} />
+                    </TouchableWithoutFeedback>
                 </View>
-            </ImageBackground >
+           // </ImageBackground >
         )
     }
 }

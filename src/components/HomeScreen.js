@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {StyleSheet,Image} from 'react-native';
+import {StyleSheet,Image, ImageBackground, Dimensions} from 'react-native';
 import { Container} from 'native-base';
 import Swiper from 'react-native-swiper';
 import HeaderComponent from './Header';
 import animals from '../fixturs/data'
 import Category from './Category';
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   wrapper: {
   }
@@ -12,7 +13,7 @@ const styles = StyleSheet.create({
 
 export default class HomeScreen extends Component {
   openDrawer() {
-    this.props.navigation.navigate('DrawerOpen');
+    this.props.navigation.openDrawer();
 }
 static navigationOptions = {
   drawerIcon: (
@@ -20,8 +21,8 @@ static navigationOptions = {
           style={{ height: 40, width: 40, marginLeft : 10,}} />
   )
 }
-navigate(url,category){
-  this.props.navigation.navigate(url, {category: category});
+navigate(url){
+  this.props.navigation.navigate(url);
 }
   render(){
     const categories = animals.catygories.map((item) =>
@@ -30,14 +31,16 @@ navigate(url,category){
         imgUrl = {item.img} 
         name = {item.name}
         bgImgUrl = {item.backgroundImg} 
-        navigate = {(url, category)=> this.navigate(url, category) }/>
+        navigate = {(url)=> this.navigate(url) }/>
       )
     return (
       <Container>
       <HeaderComponent openDrawer={() => this.openDrawer()}/>
+      <ImageBackground source={require('../images/Logo.jpg')} style={{ width: width, height: height }}>
       <Swiper style={styles.wrapper} showsButtons={true}  nextButton= { <Image source={require('../images/next.png')} style={{ height: 35, width: 35}}/>} prevButton= { <Image source={require('../images/prev.png')} style={{ height: 37, width: 37}}/>}>
         {categories}
       </Swiper>
+      </ImageBackground>
       </Container>
     );
   }

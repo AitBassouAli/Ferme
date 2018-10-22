@@ -16,18 +16,11 @@ let animalsList = [];
 export default class JeuScreen extends Component {
 
   componentWillMount() {
-    const category = this.props.navigation.getParam('category', 'pets');
-    animalsList = category == 'pets'
-      ? animals.Pets
-      : category == 'souvages'
-        ? animals.Souvages
-        : category == 'birds'
-          ? animals.Birds
-          : animals.Aquatic;
+    animalsList = animals.Pets;
   }
 
   openDrawer() {
-    this.props.navigation.navigate('DrawerOpen');
+    this.props.navigation.openDrawer();
   }
 
   getData() {
@@ -37,6 +30,7 @@ export default class JeuScreen extends Component {
           imgUrl={animal.img}
           name={animal.name}
           keywords={animal.keys}
+          question={animal.qst}
           bgImgUrl={animals.Pets.backgroundImg} />
       )
     )
