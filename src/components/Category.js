@@ -9,20 +9,18 @@ export default class Category extends Component {
 
     render() {
         return (
-            //<ImageBackground source={this.props.bgImgUrl} style={{ width: width, height: height }}>
+            <ImageBackground source={this.props.bgImgUrl} style={{ width: width, height: height }}>
                 <View style={styles.overlayC}>
                     <View style={styles.categoryName}>
                         <Animatable.Text easing="ease-in-back" iterationCount="infinite" style={styles.text}>
-                            <Text >
-                                {this.props.name}
-                            </Text>
+                            {this.props.name}
                         </Animatable.Text>
                     </View>
                     <TouchableWithoutFeedback onPress={() => this.props.navigate(this.props.refe)}>
                         <Image source={this.props.imgUrl} style={styles.slide1} />
                     </TouchableWithoutFeedback>
                 </View>
-           // </ImageBackground >
+            </ImageBackground >
         )
     }
 }
@@ -35,18 +33,16 @@ const styles = StyleSheet.create({
     categoryName: {
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 10,
     },
     text: {
-        color: '#008000',
-        fontSize: 23,
+        textAlign: 'center',
+        color: '#fff',
+        fontSize: 28,
         fontWeight: 'bold',
-        borderColor: '#008000',
-        borderWidth: 2,
-        padding: 20,
         backgroundColor: 'rgba(255,255,255,.2)',
+        padding: 20,
         marginTop: 50,
-        borderRadius: 10,
-        margin: 10
     },
 
     overlayC: {

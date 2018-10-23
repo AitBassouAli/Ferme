@@ -6,7 +6,7 @@ import * as Animatable from 'react-native-animatable';
 import Voice from 'react-native-voice';
 import Tts from 'react-native-tts';
 
-const felecitations = ['bravooo !', 'très bien !', 'excellent !', 'ohhhhh extraordinaire !', 'bon reponse continuer comme ça !', "très bien vous l'avez fait !"];
+const felecitations = ['bravooo ! tu es  studieux', 'très bien !', 'magnifique !', 'ohhhhh extraordinaire !', 'bon reponse continuer comme ça !', "très bien vous l'avez fait !"];
 
 export default class Animal extends Component {
     state = {
@@ -32,7 +32,7 @@ export default class Animal extends Component {
         if (isGoodAnswer) {
             const randomNumber = Math.floor(Math.random() * 6);
             if (this.state.nbrBadAnswer >= 1) {
-                this.speek('je sais que tu me connais');
+                this.speek('je sais que tu me connais, continue comme ça');
             }
             this.speek(felecitations[randomNumber]);
         } else {

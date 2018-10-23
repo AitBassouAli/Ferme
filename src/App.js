@@ -11,6 +11,7 @@ import JeuScreen from "./components/JeuScreen";
 import SauvageScreen from "./components/SauvageScreen";
 import BirdScreen from "./components/BirdScreen";
 import MerScreen from "./components/MerScreen";
+import Members from "./components/Members";
 
 export default class App extends Component {
 
@@ -56,6 +57,9 @@ const MyApp = DrawerNavigator({
 },
 'Les animaux aquatiques':{
   screen : MerScreen,
+},
+'A propos':{
+  screen : Members,
 } 
 },
   {

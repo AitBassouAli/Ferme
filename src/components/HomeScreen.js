@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import {StyleSheet,Image, ImageBackground, Dimensions} from 'react-native';
+import {StyleSheet,Image} from 'react-native';
 import { Container} from 'native-base';
 import Swiper from 'react-native-swiper';
 import HeaderComponent from './Header';
 import animals from '../fixturs/data'
 import Category from './Category';
-const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   wrapper: {
   }
@@ -36,11 +35,9 @@ navigate(url){
     return (
       <Container>
       <HeaderComponent openDrawer={() => this.openDrawer()}/>
-      <ImageBackground source={require('../images/Logo.jpg')} style={{ width: width, height: height }}>
       <Swiper style={styles.wrapper} showsButtons={true}  nextButton= { <Image source={require('../images/next.png')} style={{ height: 35, width: 35}}/>} prevButton= { <Image source={require('../images/prev.png')} style={{ height: 37, width: 37}}/>}>
         {categories}
       </Swiper>
-      </ImageBackground>
       </Container>
     );
   }

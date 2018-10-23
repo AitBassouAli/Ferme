@@ -2,25 +2,25 @@ const animals = {
     catygories: [{
         ref: 'Les animaux de la ferme',
         name :'Les Animaux de la ferme',
-        backgroundImg : require('../images/Logo.jpg'),
+        backgroundImg : require('../images/backC.jpg'),
         img: require('../images/fermeAn.jpg')
     },
     {
         ref: 'Les animaux sauvages',
         name :'Les animaux sauvages',
-        backgroundImg : require('../images/Logo.jpg'),
+        backgroundImg : require('../images/back2.png'),
         img: require('../images/AnimSau.jpg')
     },
     {
         ref: 'Les oiseaux',
         name :' Les oiseaux',
-        backgroundImg : require('../images/Logo.jpg'),
+        backgroundImg : require('../images/backb.jpg'),
         img: require('../images/bird.jpg')
     },
     {
         ref: 'Les animaux aquatiques',
         name :'Les animaux aquatiques',
-        backgroundImg : require('../images/Logo.jpg'),
+        backgroundImg : require('../images/backM.jpg'),
         img: require('../images/AquaAni.jpg')
     }],
     Pets: {

@@ -65,7 +65,12 @@ export default class HeaderComponent extends Component {
                                     </Card>
                                     <Card style={styles.card}>
                                         <Button block large success>
-                                            <Text style={{ textAlign: 'center', fontSize: 18 }}>En cas d'echec, vous aurez de l'aide pour savoir de quoi s'agit-il</Text>
+                                            <Text style={{ textAlign: 'center', fontSize: 18 }}>En cas d'echec, vous avez droit de 3 fois d'essai avant d'avoir de l'aide</Text>
+                                        </Button>
+                                    </Card>
+                                    <Card style={styles.card}>
+                                        <Button block large success>
+                                            <Text style={{ textAlign: 'center', fontSize: 18 }}>Si vous ne réussissez pas à le connaître, vous cliquez sur l'animal pour découvrir son nom</Text>
                                         </Button>
                                     </Card>
                                     <Card style={styles.card}>
@@ -106,7 +111,7 @@ const styles = StyleSheet.create({
     },
     head: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
         alignItems: 'center',
         color: '#17AD7F',
         fontWeight: 'bold',
